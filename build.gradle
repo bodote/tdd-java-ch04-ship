@@ -7,7 +7,9 @@ repositories {
 }
 
 dependencies {
-    testCompile 'org.testng:testng:6.8.21'
+    testImplementation 'org.testng:testng:7.5'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
 }
 
 test.useTestNG()
