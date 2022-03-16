@@ -1,5 +1,8 @@
 package com.packtpublishing.tddjava.ch04ship;
 
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode
 public class Point {
 
     private int x;
