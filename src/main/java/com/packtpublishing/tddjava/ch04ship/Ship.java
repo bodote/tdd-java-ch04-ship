@@ -8,4 +8,19 @@ import lombok.Data;
 public class Ship {
         private  Location location;
 
+        public void moveForeward() {
+                location.forward();
+        }
+
+        public void moveBackward() {
+                location.backward();
+        }
+
+        public void turnLeft() {
+                location.turnLeft();
+        }
+
+        public void turnRight() {
+                location.turnRight();
+        }
 }

@@ -1,10 +1,10 @@
 package com.packtpublishing.tddjava.ch04ship;
 
 import lombok.extern.slf4j.Slf4j;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
 @Slf4j
@@ -25,5 +25,38 @@ public class ShipSpec {
         assertThat(ship.getLocation()).isEqualTo(initialLocation);
         log.info("++++++++ OK that was easy");
     }
+    public void moveShipforeward(){
+        Location expectedLocation = initialLocation.copy();
+        expectedLocation.forward();
+        ship.moveForeward();
+        assertThat(ship.getLocation()).isEqualTo(expectedLocation);
+
+    }
+
+
+    public void moveShipBackwards(){
+        Location expectedLocation = initialLocation.copy();
+        expectedLocation.backward();
+        ship.moveBackward();
+        assertThat(ship.getLocation()).isEqualTo(expectedLocation);
+
+    }
+
+    public void roteteShipLeft(){
+        Location expectedLocation = initialLocation.copy();
+        expectedLocation.turnLeft();
+        ship.turnLeft();
+        assertThat(ship.getLocation()).isEqualTo(expectedLocation);
+
+    }
+    public void roteteShipRight(){
+        Location expectedLocation = initialLocation.copy();
+        expectedLocation.turnRight();
+        ship.turnRight();
+        assertThat(ship.getLocation()).as("it should not be just a reference to the exact same object").isNotSameAs(expectedLocation);
+        assertThat(ship.getLocation()).as("location should be not same object but same content").isEqualTo(expectedLocation);
+
+    }
+
 
 }
