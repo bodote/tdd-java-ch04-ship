@@ -1,40 +1,45 @@
 package com.packtpublishing.tddjava.ch04ship;
 
-import org.testng.annotations.*;
-import static org.testng.Assert.*;
 
-@Test
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class DirectionSpec {
 
+    @Test
     public void whenGetFromShortNameNThenReturnDirectionN() {
         Direction direction = Direction.getFromShortName('N');
         assertEquals(direction, Direction.NORTH);
     }
 
-    public void whenGetFromShortNameWThenReturnDirectionW() {
+    @Test public void whenGetFromShortNameWThenReturnDirectionW() {
         Direction direction = Direction.getFromShortName('W');
         assertEquals(direction, Direction.WEST);
     }
 
-    public void whenGetFromShortNameBThenReturnNone() {
+    @Test public void whenGetFromShortNameBThenReturnNone() {
         Direction direction = Direction.getFromShortName('B');
         assertEquals(direction, Direction.NONE);
     }
 
-    public void givenSWhenLeftThenE() {
+    @Test public void givenSWhenLeftThenE() {
         assertEquals(Direction.SOUTH.turnLeft(), Direction.EAST);
     }
 
-    public void givenNWhenLeftThenW() {
+    @Test public void givenNWhenLeftThenW() {
         assertEquals(Direction.NORTH.turnLeft(), Direction.WEST);
     }
 
-    public void givenSWhenRightThenW() {
+    @Test public void givenSWhenRightThenW() {
         assertEquals(Direction.SOUTH.turnRight(), Direction.WEST);
     }
 
-    public void givenWWhenRightThenN() {
+    @Test public void givenWWhenRightThenN() {
         assertEquals(Direction.WEST.turnRight(), Direction.NORTH);
     }
+    private void assertEquals(Object a, Object b){
+        assertThat(a).isEqualTo(b);
 
+    }
 }

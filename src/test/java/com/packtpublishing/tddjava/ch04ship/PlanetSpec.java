@@ -1,20 +1,23 @@
 package com.packtpublishing.tddjava.ch04ship;
 
-import org.testng.annotations.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@Test
+
+
 public class PlanetSpec {
 
     private Planet planet;
     private final Point max = new Point(50, 50);
     private List<Point> obstacles;
 
-    @BeforeMethod
+    @BeforeEach
     public void beforeTest() {
         obstacles = new ArrayList<Point>();
         obstacles.add(new Point(12, 13));
@@ -22,12 +25,13 @@ public class PlanetSpec {
         planet = new Planet(max, obstacles);
     }
 
+    @Test
     public void whenInstantiatedThenMaxIsSet() {
-        assertEquals(planet.getMax(), max);
+        assertThat(planet.getMax()).isEqualTo( max);
     }
 
-    public void whenInstantiatedThenObstaclesAreSet() {
-        assertEquals(planet.getObstacles(), obstacles);
+    @Test public void whenInstantiatedThenObstaclesAreSet() {
+        assertThat(planet.getObstacles()).isEqualTo( obstacles);
     }
 
 }

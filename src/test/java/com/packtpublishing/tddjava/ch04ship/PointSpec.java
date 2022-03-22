@@ -1,26 +1,29 @@
 package com.packtpublishing.tddjava.ch04ship;
 
-import org.testng.annotations.*;
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@Test
+import static org.assertj.core.api.Assertions.assertThat;
+
+
 public class PointSpec {
 
     private Point point;
     private final int x = 12;
     private final int y = 21;
 
-    @BeforeMethod
+    @BeforeEach
     public void beforeTest() {
         point = new Point(x, y);
     }
 
+    @Test
     public void whenInstantiatedThenXIsSet() {
-        assertEquals(point.getX(), x);
+        assertThat(point.getX()).isEqualTo(x);
     }
 
-    public void whenInstantiatedThenYIsSet() {
-        assertEquals(point.getY(), y);
+    @Test public void whenInstantiatedThenYIsSet() {
+        assertThat(point.getY()).isEqualTo( y);
     }
 
 }
